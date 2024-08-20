@@ -1,0 +1,35 @@
+// This code is checking if either num1 or num2 is not a number (NaN). If either of them is not a number, the code will print "Invalid input. Please enter numbers only." to the console. If both num1 and num2 are numbers, the code will move on to the else statement.
+
+// In the else statement, there is a switch statement that checks for the value of the operator variable. Depending on the value, a different calculation will be performed using num1 and num2. If none of the cases match, the default case will print "Invalid operator. Please enter one of the following: +, -, *, /" to the console.
+
+// After performing the calculation, the result will be printed to the console in a string format using template literals.
+
+if (isNaN(num1) || isNaN(num2)) {
+  console.log("Invalid input. Please enter numbers only.");
+} else {
+  // Perform calculation based on operator
+  switch (operator) {
+    case "+":
+      result = num1 + num2;
+      break;
+    case "-":
+      result = num1 - num2;
+      break;
+    case "*":
+      result = num1 * num2;
+      break;
+    case "/":
+      // Check for division by zero
+      if (num2 === 0) {
+        console.log("Cannot divide by zero.");
+        break;
+      }
+      result = num1 / num2;
+      break;
+    default:
+      console.log("Invalid operator. Please enter one of the following: +, -, *, /");
+  }
+
+  // Print the result to the console
+  console.log(`${num1} ${operator} ${num2} = ${result}`);
+}
