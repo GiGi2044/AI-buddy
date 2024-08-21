@@ -2,39 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAIPoweredBotResponse = getAIPoweredBotResponse;
 const axios_1 = require("axios");
-//async function getAIPoweredBotResponse(prompt: string): Promise<string>{
-//    const apiUrl= "http://localhost:3000";
-//
-//    try{
-//        const response = await axios.post(apiUrl, { prompt });
-//        return response.data.bot.trim();
-//    }
-//    catch (error: unknown) {
-//      if (axios.isAxiosError(error)) {
-//          // Now TypeScript knows this is an Axios error
-//          console.error("Error Fetching response:", error.message);
-//          if (error.response) {
-//              console.error(error.response.data);
-//              console.error(error.response.status);
-//              console.error(error.response.headers);
-//          } else if (error.request) {
-//              console.error(error.request);
-//          } else {
-//              console.error('Error', error.message);
-//          }
-//      } else {
-//          // Handle the case where it's not an AxiosError
-//          console.error('An unexpected error occurred:', error);
-//      }
-//      return 'Something Went wrong';
-//    }
-//}
-async function getAIPoweredBotResponse(prompt) {
-    const apiUrl = "http://localhost:3000";
+async function getAIPoweredBotResponse(question) {
+    const apiUrl = "http://localhost:3000/ask";
     try {
-        const response = await axios_1.default.post(apiUrl, { prompt });
-        if (response.data && response.data.bot) {
-            return response.data.bot;
+        const response = await axios_1.default.post(apiUrl, { question });
+        // Adjusted to handle the response structure you logged
+        if (response.data && response.data.answer) { // Use 'answer' if that's what your server uses
+            return response.data.answer;
         }
         else {
             console.log('Received unexpected data format:', response.data);

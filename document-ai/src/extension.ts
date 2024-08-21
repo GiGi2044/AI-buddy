@@ -62,16 +62,17 @@ async function handleUserInput(){
 
 }
 
-// Function to write content to a new text file
+// Function to write content to a new text file with typing effect
 async function writeToNewFile(content: string) {
   const newFile = await vscode.workspace.openTextDocument({ content: '', language: 'plaintext' });
   const editor = await vscode.window.showTextDocument(newFile);
-  await editor.edit(editBuilder => {
-      if (!content) {
-          console.log('No content to write'); // Log if content is empty
-      }
-      editBuilder.insert(new vscode.Position(0, 0), content);
-  });
+
+  // Use the typing effect for content writing
+  if (!content) {
+      console.log('No content to write'); // Log if content is empty
+  } else {
+      await typeTextInEditor(editor, content);
+  }
 }
 
 // Function to handle the documentation of selected code
@@ -89,17 +90,16 @@ async function documentSelectedCode() {
   }
 
   // Prepend the hardcoded prompt to the selected text
-  const prompt = "Document the following code: " + text;
+  const prompt = "Document the following code concisely: " + text;
 
   try {
       console.log('Full Prompt:', prompt); // Check the full prompt
       const documentation = await getAIPoweredBotResponse(prompt);
       console.log('Documentation:', documentation); // Check the output from the API
       if (documentation.trim()) {
-          // Concatenate the documentation with the original code
-          const contentToWrite = documentation.trim() + "\n\n" + text;
-          await writeToNewFile(contentToWrite);
-          vscode.window.showInformationMessage('Documentation and code created and opened in a new file');
+          // Use the typing effect to write the documentation in a new file
+          await writeToNewFile(documentation.trim());
+          vscode.window.showInformationMessage('Documentation created and is being typed in a new file');
       } else {
           vscode.window.showInformationMessage('No documentation was generated.');
       }

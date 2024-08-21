@@ -1,0 +1,49 @@
+// Prompt the user to enter the first number and store it in num1
+let num1 = parseFloat(prompt("Enter first number: "));
+
+// Prompt the user to enter the second number and store it in num2
+let num2 = parseFloat(prompt("Enter second number: "));
+
+// Prompt the user to enter the operator and store it in operator
+let operator = prompt("Enter operator (+, -, *, /): ");
+
+// Declare a variable result to store the result of the operation
+let result;
+
+// Check if either num1 or num2 is not a valid number
+if (isNaN(num1) || isNaN(num2)) {
+  // If either input is invalid, log an error message
+  console.log("Invalid input. Please enter numbers only.");
+} else {
+  // If both inputs are valid numbers, perform the operation based on the operator
+  switch (operator) {
+    case "+":
+      // If the operator is "+", add num1 and num2 and store the result in result
+      result = num1 + num2;
+      break;
+    case "-":
+      // If the operator is "-", subtract num2 from num1 and store the result in result
+      result = num1 - num2;
+      break;
+    case "*":
+      // If the operator is "*", multiply num1 and num2 and store the result in result
+      result = num1 * num2;
+      break;
+    case "/":
+      // If the operator is "/", check if num2 is zero
+      if (num2 === 0) {
+        // If num2 is zero, log an error message as division by zero is not allowed
+        console.log("Cannot divide by zero.");
+        break;
+      }
+      // If num2 is not zero, divide num1 by num2 and store the result in result
+      result = num1 / num2;
+      break;
+    default:
+      // If the operator is not one of the valid operators, log an error message
+      console.log("Invalid operator. Please enter one of the following: +, -, *, /");
+  }
+
+  // Log the operation and the result
+  console.log(`${num1} ${operator} ${num2} = ${result}`);
+}

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.26.1",
     "vsce": "^2.15.0"
   }
 }
