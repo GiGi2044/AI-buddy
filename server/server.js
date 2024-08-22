@@ -76,7 +76,7 @@ app.post('/ask', async (req, res) => {
     const response = await anthropic.messages.create({
       model: "claude-3-opus-20240229",
       max_tokens: 1000,
-      temperature: 0.5,
+      temperature: 0,
       system: "Respond only with brief but precise answers and only commenting the code and the code",
       messages: [{
         role: "user",

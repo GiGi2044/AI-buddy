@@ -43,7 +43,6 @@ if (isNaN(num1) || isNaN(num2)) {
       // If the operator is not one of the valid operators, log an error message
       console.log("Invalid operator. Please enter one of the following: +, -, *, /");
   }
-
   // Log the operation and the result
   console.log(`${num1} ${operator} ${num2} = ${result}`);
 }
