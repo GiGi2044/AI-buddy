@@ -70,6 +70,13 @@ const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY
 });
 
+// Define a GET route for the root path
+app.get('/', (req, res) => {
+  res.status(200).send({
+    message: 'Welcome to the Claude Express server!'
+  });
+});
+
 app.post('/ask', async (req, res) => {
   try {
     const { question } = req.body;
