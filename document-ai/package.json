@@ -15,10 +15,6 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.getAIPoweredBotResponse",
-        "title": "get AI response"
-      },
-      {
         "command": "extension.documentSelectedCode",
         "title": "Document Selected Code"
       }
