@@ -1,7 +1,7 @@
 import axios from "axios";
 
 async function getAIPoweredBotResponse(question: string): Promise<string> {
-  const apiUrl = "http://localhost:3000/ask";
+  const apiUrl = "https://ai-buddy-uh26.onrender.com/ask";
   try {
     const response = await axios.post(apiUrl, { question });
     // Adjusted to handle the response structure you logged
